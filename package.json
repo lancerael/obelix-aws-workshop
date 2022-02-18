@@ -4,7 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compress": "zip -j deploy.zip ./src/*",
+    "aws": "aws lambda update-function-code --function-name=obelix-aws-workshop --zip-file=fileb://deploy.zip",
+    "cleanup": "rm -rf deploy.zip",
+    "deploy": "npm run compress && npm run aws && npm run cleanup"
   },
   "repository": {
     "type": "git",
